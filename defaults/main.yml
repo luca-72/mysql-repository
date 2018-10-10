@@ -1,0 +1,5 @@
+---
+mysql_repo_url: "https://repo.mysql.com/mysql80-community-release-el7-1.noarch.rpm"
+# centos-7_repo_gpg_key_url: "/etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7"
+mysql_repo_gpg_key_url: "/etc/pki/rpm-gpg/RPM-GPG-KEY-mysql"
+mysql_repofile_path: "/etc/yum.repos.d/mysql.repo"

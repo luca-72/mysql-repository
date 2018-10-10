@@ -1,0 +1,23 @@
+---
+- name: 1.Check if MYSQL repo is already configured.
+  stat: path={{ mysql_repofile_path }}
+  register: mysql_repofile_result
+
+- name: 2.Install MYSQL repo.
+  yum:
+    name: "{{ mysql_repo_url }}"
+    state: present
+  register: result
+  when: not mysql_repofile_result.stat.exists
+
+- name: 3.Import MYSQL GPG key.
+  rpm_key:
+    key: "{{ mysql_repo_gpg_key_url }}"
+    state: present
+  when: not mysql_repofile_result.stat.exists
+
+# - name: 3.Import CentOS GPG key.
+#   rpm_key:
+#     key: "{{ centos-7_repo_gpg_key_url }}"
+#     state: present
+#   when: not mysql_repofile_result.stat.exists
